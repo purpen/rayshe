@@ -19,11 +19,11 @@
 	sher.build_auth_page();
 	
 	$('.btn-auth').bind('click', function(){
-		$('.home-login').css({'padding-top':'240px'});
+		$('.home-login').css({'padding-top':'200px'});
 		
 		var pos = $(this).position();
 		var left = pos.left + $(this).width() + 50;
-		$('.form-arrow').css({'background-position': left});
+		$('.form-arrow').css({'background-position': left}).show();
 		
 		var el =  this.hash && this.hash.substr(1);
 		if(el == 'login-form'){
@@ -61,7 +61,9 @@
 	<div id="page-home">
 	    {% block content %}
 			<div class="home-login">
-				<h2 class="text-center mb-30">所谓伊人，在水一方。</h2>
+				<div class="text-center mb-30">
+					<img src="{{ app_url_images }}/rayshe.png" alt="所谓伊人，在水一方。" />
+				</div>
 				<div class="buttons-box">
 					<a href="#login-form" class="btn btn-inverse btn-lg btn-auth">登录</a> <a href="#register-form" class="btn btn-inverse btn-lg btn-auth">注册</a>
 				</div>

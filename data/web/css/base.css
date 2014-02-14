@@ -491,7 +491,7 @@ ul li, nav li {
 }
 
 #main-search-box {
-	margin-top:30px;
+	margin-top:15px;
 	position: relative;
 }
 #main-search-box .icon-search {
@@ -513,7 +513,7 @@ ul li, nav li {
 .home-login {
 	position:relative;
 	z-index: 9;
-	padding-top:340px;
+	padding-top:300px;
 }
 .home-login .buttons-box {
 	width:350px;
@@ -549,11 +549,9 @@ ul li, nav li {
 .form-arrow {
 	height: 8px;
 	margin-top: -8px;
+	display:none;
 	background: url("/images/icon-symbol.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
-
-
-
 
 .sub-nav {
 	margin-top:10px;
