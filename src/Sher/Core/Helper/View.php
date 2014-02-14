@@ -8,11 +8,11 @@ class Sher_Core_Helper_View {
 
     public static function setup_deploy_information(&$stash) {
         // inject version information to view layout
-        $stash['lgk_version'] = Doggy_Config::$vars['app.version.lgk'];
+        $stash['sher_version'] = Doggy_Config::$vars['app.version.sher'];
         // css/js bundle/version
         $stash['js_use_bundle'] = Doggy_Config::$vars['app.js.use_bundle'];
         $stash['js_jquery_bundle_version'] = Doggy_Config::$vars['app.version.jquery_bundle_version'];
-        $stash['js_lgk_bundle_version'] = Doggy_Config::$vars['app.version.lgk_bundle_version'];
+        $stash['js_sher_bundle_version'] = Doggy_Config::$vars['app.version.sher_bundle_version'];
         $stash['css_use_bundle'] = Doggy_Config::$vars['app.css.use_bundle'];
         $stash['css_bundle_version'] = Doggy_Config::$vars['app.version.css_bundle_version'];
 	}

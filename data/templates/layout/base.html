@@ -9,6 +9,8 @@
 		{%endblock%}
 		<title>{% block title %}{% endblock %}</title>
 		{% if css_use_bundle %}
+			<link rel="stylesheet" href="{{ app_url_css }}/bootstrap.min.css" type="text/css" />
+			<link rel="stylesheet" href="{{ app_url_css }}/todc-bootstrap.min.css" type="text/css" />
 			<link rel="stylesheet" type="text/css" href="{{app_url_css}}/bundle_{{ css_bundle_version }}_common.css" />
 		{% else %}
 			<link rel="stylesheet" href="{{ app_url_css }}/bootstrap.min.css" type="text/css" />
@@ -22,8 +24,10 @@
 		{% block layout_css %}{% endblock %}
 		{% block page_css %}{% endblock %}
 		{% if js_use_bundle %}
+			<script type="text/javascript" src="{{ app_url_js }}/jquery-1.10.2.min.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/bootstrap.min.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/bundle_{{ js_jquery_bundle_version }}_jquery.js"></script>
-			<script type="text/javascript" src="{{ app_url_js }}/bundle_{{ js_lgk_bundle_version }}_lgk.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/bundle_{{ js_sher_bundle_version }}_sher.js"></script>
 		{% else %}
 			<script type="text/javascript" src="{{ app_url_js }}/jquery-1.10.2.min.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/bootstrap.min.js"></script>
