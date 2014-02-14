@@ -1,0 +1,7 @@
+---
+app.db.default: 'mysql://root:@localhost/test?charset=utf8'
+#if in production mode,uncomment and change it to 'prod'
+#app.mode: 'dev'
+app.mongodb_rs: true
+app.mongodb_host: '192.168.8.3'
+app.keychains.private: 'xxxxOOOOxxxx'

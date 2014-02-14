@@ -1,0 +1,59 @@
+{%extends 'layout/admin.html'%}
+{% block page_css %}
+{% endblock %}
+{% block js %}
+{% endblock %}
+{% block jquery %}
+    $('#cake-form').validate({
+        rules:{
+           content:{
+               required:true,
+               maxlength:75
+           }
+        },
+        messages: {
+        	content:{
+				required:'内容不能为空',
+				maxlength:'请别超过75个字符'
+			}
+        },
+        submitHandler: function(form) {
+            $(form).ajaxSubmit();
+        }
+    });
+{% endblock %}
+{% block content %}
+	<div class="list-group clearfix">
+		<div class="btn-group">
+			<a href="{{ app_url_action_base }}/admin/cake" class="btn btn-default">全部</a>
+		</div>
+		<div class="btn-group">
+			<a href="{{ app_url_action_base }}/admin/new_cake" class="btn btn-success">新增一条</a>
+		</div>
+		<form class="form-inline pull-right" method="get" action="">
+			<div class="form-group">
+				<input class="form-control input-sm" name="search" />
+			</div>
+			<input type="submit" class="btn btn-success" value="搜索" />
+		</form>
+	</div>
+	<div class="list-group">
+		<h4>新增短语</h4>
+		<form action="{{ app_url_action_base }}/admin/save_cake" class="form-horizontal" method="post" id="cake-form">
+			<input type="hidden" name="_id" value="{{ cake._id }}" />
+			<div class="form-group">
+			  	<label class="col-sm-2 control-label">内容：</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" rows="3" name="content">{{ cake.content }}</textarea>
+					<span class="help-block">限制75个字符之内。</span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+					<input type="submit" class="btn btn-success btn-lg" value="确认保存" />
+			    </div>
+			</div>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		{%block meta%}
+			<meta name="title" content="悦伊-所谓伊人，在水一方" />
+			<meta name="keywords" content="悦伊，社区"/>
+			<meta name="description" content="悦伊，社区" />
+		{%endblock%}
+		<title>{% block title %}{% endblock %}</title>
+		{% if css_use_bundle %}
+			<link rel="stylesheet" type="text/css" href="{{app_url_css}}/bundle_{{ css_bundle_version }}_common.css" />
+		{% else %}
+			<link rel="stylesheet" href="{{ app_url_css }}/bootstrap.min.css" type="text/css" />
+			<link rel="stylesheet" href="{{ app_url_css }}/todc-bootstrap.min.css" type="text/css" />
+			<link rel="stylesheet" href="{{ app_url_css }}/jquery.vegas.css" type="text/css" />
+			<link rel="stylesheet" href="{{ app_url_css }}/select2.css" type="text/css" />
+			<link rel="stylesheet" href="{{ app_url_css }}/imgareaselect-default.css" type="text/css" />
+			<link rel="stylesheet" href="{{ app_url_css }}/fineuploader-3.5.0.css" type="text/css" />
+			<link rel="stylesheet" href="{{ app_url_css }}/base.css" type="text/css" />
+		{% endif %}
+		{% block layout_css %}{% endblock %}
+		{% block page_css %}{% endblock %}
+		{% if js_use_bundle %}
+			<script type="text/javascript" src="{{ app_url_js }}/bundle_{{ js_jquery_bundle_version }}_jquery.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/bundle_{{ js_lgk_bundle_version }}_lgk.js"></script>
+		{% else %}
+			<script type="text/javascript" src="{{ app_url_js }}/jquery-1.10.2.min.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/bootstrap.min.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.vegas.min.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.bar.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.taconite.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.validate.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.form.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/select2.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.imgareaselect.pack.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.fineuploader-3.5.0.min.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/scrolltopcontrol.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/sher.js"></script>
+		{% endif %}
+
+		{% block layout_js %}{% endblock %}
+		{% block page_js %}{% endblock %}
+
+		<script type="text/javascript">
+		<!--
+		$.taconite.debug = 1;
+		
+		$(function(){
+    		sher.initial();
+			var views = {
+				domain: '{{ app_url_domain }}',
+        		css: '{{ app_url_css}}',
+        		js: '{{ app_url_js}}',
+        		images: '{{ app_url_images}}',
+				app_url_action_base: '{{ app_url_action_base }}'
+			};
+    		{% block layout_jquery %}{% endblock %}
+    		{% block jquery %}{% endblock %}
+		});
+		//-->
+		</script>
+	</head>
+	
+	<body>
+		<div id="doc3">
+		    {% block layout_header %}{% endblock %}
+		    {% block layout_content %}
+		        {% block content %}{% endblock %}
+		    {% endblock %}
+			{% block layout_footer %}{% endblock %}
+		</div>
+	</body>
+</html>

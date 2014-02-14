@@ -1,0 +1,141 @@
+{%extends 'layout/board.html'%}
+{% block page_css %}
+{% endblock %}
+{% block js %}
+{% endblock %}
+{% block jquery %}
+	$('#select-filter').select2();
+	$('#select-filter-two').select2();
+	$('#select-filter-three').select2();
+	
+	sher.build_profile_page();
+{% endblock %}
+{% block content %}
+<div class="container">
+	{% include "block/sub_menu.html" %}
+	<div class="list-group clearfix">
+		<form action="{{app_url_action_base}}/my/save_profile" method="post" class="form" id="profile-form">
+			<h3>更新个人资料</h3>
+			<p class="text-muted"><label class="badge mr-5">注意</label>带*号资料为保密资料，仅您关注的朋友可见。</p>
+			<input class="form-control" name="_id" type="hidden" value="{{ user_id }}" />
+			<div class="form-group row">
+				<div class="col-md-3">
+					<label>昵称：</label>
+					<input type="text" class="form-control" name="nickname" value="{{ user.nickname }}" />
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-md-3">
+					<label>性别：</label>
+					<div class="clearfix">
+						<input type="radio" name="sex" value="1" {%if user.sex == 1%}checked="checked"{%endif%}> 男
+						<input type="radio" name="sex" value="2" {%if user.sex == 2%}checked="checked"{%endif%}> 女
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<label>婚姻状况：</label>
+					<div class="clearfix">
+						<input type="radio" name="marital" value="11" {%if user.marital == 11%}checked="checked"{%endif%}> 单身
+						<input type="radio" name="marital" value="12" {%if user.marital == 12%}checked="checked"{%endif%}> 热恋
+						<input type="radio" name="marital" value="22" {%if user.marital == 22%}checked="checked"{%endif%}> 已婚
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-md-3">
+					<label>职业：</label>
+					<input type="text" class="form-control" name="job" value="{{ profile.job }}" />
+				</div>
+				<div class="col-md-3">
+					<label>现居城市：</label>
+					<input type="text" class="form-control" name="city" value="{{ user.city }}" />
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-md-3">
+					<label>民族：</label>
+					<input type="text" class="form-control" name="nation" value="{{ profile.nation }}" />
+				</div>
+				<div class="col-md-3">
+					<label>籍贯：</label>
+					<input type="text" class="form-control" name="born_place" value="{{ profile.born_place }}" />
+				</div>
+			</div>
+			
+			
+			<div class="form-group row mt-30">
+				<div class="col-md-3">
+					<label><small class="text-info">*</small>真实姓名：</label>
+					<input type="text" class="form-control" name="realname" value="{{ profile.realname }}" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-md-3">
+					<label><small class="text-info">*</small>身高（CM）：</label>
+					<input type="text" class="form-control" name="height" value="{{ user.height }}" />
+				</div>
+				<div class="col-md-3">
+					<label><small class="text-info">*</small>体重（KG）：</label>
+					<input type="text" class="form-control" name="weight" value="{{ user.weight }}" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label><small class="text-info">*</small>出生年月日：</label>
+				<div class="row">
+					<div class="col-md-2">
+						<select name="year" class="form-control" id="select-filter">
+							<option value="">年份</option>
+							{% for year in years %}
+							<option value="{{ year }}" {%if user.age.year == year%}selected="selected"{%endif%}>{{ year }}年</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-md-2">
+						<select name="mouth" class="form-control col-md-2" id="select-filter-two">
+							<option value="">月份</option>
+							{% for mouth in mouths %}
+							<option value="{{ mouth }}" {%if user.age.mouth == mouth%}selected="selected"{%endif%}>{{ mouth }}月</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-md-2">
+						<select name="day" class="form-control" id="select-filter-three">
+							<option value="">日期</option>
+							{% for day in days %}
+							<option value="{{ day }}" {%if user.age.day == day%}selected="selected"{%endif%}>{{ day }}日</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-md-9">
+					<label>个人关键词：</label>
+					<textarea class="form-control" rows="2" name="tags">{% for t in user.tags %}{{ t }},{% endfor %}</textarea>
+					<span class="help-block">每个词之间使用,隔开</span>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-md-9">
+					<label>个人评价：</label>
+					<textarea class="form-control" rows="5" name="summary">{{ user.summary }}</textarea>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-md-3">
+					<input type="submit" class="btn btn-inverse" value="确认修改" />
+					<a href="javascript:history.go(-1);" class="btn btn-link text-link">取消</a>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>
+{% endblock %}

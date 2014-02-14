@@ -1,0 +1,49 @@
+{%extends 'layout/admin.html'%}
+{% block page_css %}
+{% endblock %}
+{% block js %}
+{% endblock %}
+{% block content %}
+	<div class="list-group clearfix">
+		<div class="btn-group">
+			<a href="" class="btn btn-default">全部</a>
+			<a href="" class="btn btn-default">已使用</a>
+		</div>
+		<div class="btn-group">
+			<a href="{{ app_url_action_base }}/admin/new_invitation" class="btn btn-success">增发</a>
+		</div>
+	
+		<form class="form-inline pull-right" method="get" action="">
+			<div class="form-group">
+				<input class="form-control input-sm" name="search" />
+			</div>
+			<input type="submit" class="btn btn-success" value="搜索" />
+		</form>
+	</div>
+	<div class="list-group">
+		<p class="mt-20">
+			选择：<a href="">全选</a> <a href="">反选</a> <a href="">不选</a>
+		</p>
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>邀请码</th>
+					<th>所属用户</th>
+					<th>状 态</th>
+					<th>管理操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

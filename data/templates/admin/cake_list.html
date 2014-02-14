@@ -1,0 +1,42 @@
+{%extends 'layout/admin.html'%}
+{% block page_css %}
+{% endblock %}
+{% block js %}
+{% endblock %}
+{% block content %}
+	<div class="list-group clearfix">
+		<div class="btn-group">
+			<a href="{{ app_url_action_base }}/admin/cake" class="btn btn-default">全部</a>
+		</div>
+		<div class="btn-group">
+			<a href="{{ app_url_action_base }}/admin/new_cake" class="btn btn-success">新增一条</a>
+		</div>
+		<form class="form-inline pull-right" method="get" action="">
+			<div class="form-group">
+				<input class="form-control input-sm" name="search" />
+			</div>
+			<input type="submit" class="btn btn-success" value="搜索" />
+		</form>
+	</div>
+	<div class="list-group">
+		{% cake_list var:'list' page:page %}
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th></th>
+					<th>内容</th>
+					<th>管理操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for cake in list.rows %}
+				<tr id="{{ cake._id }}">
+					<td></td>
+					<td>{{ cake.content }}</td>
+					<td><a href="{{ app_url_action_base }}/admin/new_cake?id={{ cake._id }}">编辑</a> <a href="{{ app_url_action_base }}/admin/delete_cake?id={{ cake._id }}" class="confirm-request">删除</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

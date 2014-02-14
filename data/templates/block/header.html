@@ -1,0 +1,30 @@
+<div class="container">
+	<div id="hd">
+		<div class="row">
+			<div class="col-md-8">
+				{% if visitor %}
+				<a href="{{ visitor.home_url }}" title="个人主页">
+					<img src="{{ app_url_images }}/logo.jpg" />
+				</a>
+				{% else %}
+				<a href="{{ app_url_domain }}" title="首页">
+					<img src="{{ app_url_images }}/logo.jpg" />
+				</a>
+				{% endif %}
+			</div>
+			<div class="col-md-4">
+				<form id="main-search-box" class="form" method="get" action="{{ site_menu_search }}">
+					<div class="form-group">
+						<input class="form-control input-lg" name="q" value="{{ q }}" />
+						<input type="image" src="{{ app_url_images }}/icon-search.jpg" class="icon-search" >
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<div id="cake-box">
+			{% cake_list var:'cake' page:1 random:1 %}
+			{% if cake%}{{ cake.content }}{% endif %}
+		</div>
+	</div>
+</div>

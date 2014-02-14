@@ -1,0 +1,49 @@
+{%if pager%}
+<div class="text-center">
+	<ul class="pagination clearfix">
+	    {% if pager.show_prev %}
+	    <li>
+			<a href="{{pager.prev_url}}">«</a>
+		</li>
+	    {% else %}
+	    <li class="disabled">
+			<a href="javascript:void(0);" >«</a>
+		</li>
+	    {% endif %}
+
+	    {%for p in pager.pages%}
+	    {% if p.prefix_text %}
+		<li>
+			<a>{{ p.prefix_text }}</a>
+		</li>
+		{% endif %}
+		<li class="{{p.css}}">
+	    	<a href="{{p.url}}">{{p.page_index}}</a>
+		</li>
+	
+	    {% if p.suffix_text %}
+		<li>
+			<a>{{ p.suffix_text }}</a>
+		<li>	
+		{% endif %}
+	
+	    {%endfor%}
+	
+	    {% if pager.show_next %}
+		<li>
+	    	<a class="btn-next sprite-btn" href="{{pager.next_url}}">»</a>
+		</li>
+	    {% else %}
+		<li>
+	    	<a class="btn-next sprite-btn">»</a>
+		</li>
+	    {% endif %}
+	
+	    {% if pager.total_rows %}
+		<li>
+	    	<span>共有{{ pager.total_rows }}条记录</span>
+		</li>
+	    {% endif %}
+	</ul>
+</div>
+{%endif%}

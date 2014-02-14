@@ -1,0 +1,66 @@
+{%extends 'layout/board.html'%}
+{% block page_css %}
+{% endblock %}
+{% block js %}
+{% endblock %}
+{% block jquery %}
+	$('#select-filter').select2();
+	$('#select-filter-two').select2();
+	$('#select-filter-three').select2();
+	$('#select-filter-four').select2();
+{% endblock %}
+{% block content %}
+<div class="container">
+	{% include "block/sub_menu.html" %}
+	<div class="list-group clearfix">
+		<h3>邀请好友 </h3>
+		<div class="row">
+			<div class="col-md-6">
+				<h5>剩余 <b>{{ free_invites_cnt }}</b> 个未使用</h5>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td>邀请码</td>
+							<td>状态</td>
+							<td>操作</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for code in free_invites %}
+						<tr>
+							<td>{{ code._id }}</td>
+							<td>未使用</td>
+							<td><a href="" class="btn btn-default">复制</a></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<h5>已使用 <b>{{ used_invites_cnt }}</b> 个</h5>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td>邀请码</td>
+							<td>状态</td>
+							<td>被邀请人</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for code in used_invites %}
+						<tr>
+							<td>{{ code._id }}</td>
+							<td>{% if code.used_by %}已使用{% else %}未使用{% endif %}</td>
+							<td></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'layout/board.html' %}
+{% block title %}后台管理-悦伊-所谓伊人，在水一方{% endblock %}
+{% block layout_css %}{% endblock %}
+{% block page_css %}{% endblock %}
+{% block layout_js %}{% endblock %}
+{% block page_js %}{% endblock %}
+{% block layout_jquery %}{% endblock %}
+{% block jquery %}{% endblock %}
+
+{% block layout_content %}
+<div class="container">
+	<div id="bd">
+		<!--alert box-->
+		<div id="alert-box"></div>
+		<div class="row">
+			<div class="col-md-3">
+				{% include "block/sitebar_admin.html" %}
+			</div>
+			<div class="col-md-9 content-box">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

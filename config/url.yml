@@ -1,0 +1,61 @@
+---
+app.domain.base: 'http://sher.me'
+app.domain.static: '{$app.domain.base}'
+app.domain.app: '{$app.domain.base}'
+
+app.url.domain:         '{$app.domain.base}'
+app.url.action_base:    '{$app.domain.app}/app/site'
+
+app.url.js:     '{$app.domain.static}/js'
+app.url.css:    '{$app.domain.static}/css'
+app.url.images: '{$app.domain.static}/images'
+app.url.bundle: '{$app.domain.base}/bundle'
+
+#首页
+app.url.index:			'{$app.url.action_base}/index'
+#tag,分类,搜索
+app.url.tags:           '/tags'
+app.url.tag:			'/tag'
+
+#个人中心
+app.url.my:				'{$app.url.action_base}/my'
+app.url.my.message:		'{$app.url.action_base}/my/message'
+
+#个人主页
+app.url.user:			'{$app.url.domain}/user'
+app.url.user.love:		'{$app.url.domain}/user/%s/love'
+app.url.user.album:		'{$app.url.domain}/user/%s/album'
+app.url.user.view:	'{$app.url.user}/%s'
+
+#评论
+app.url.comment:		'{$app.url.action_base}/comment'
+
+#登录,登出,注册,忘记密码,输入邀请码
+app.url.auth:		'{$app.url.action_base}/auth'
+app.url.login: 		'{$app.url.action_base}/index?ref=login'
+app.url.logout: 	'{$app.url.action_base}/auth/logout'
+app.url.register: 	'{$app.url.action_base}/index?ref=register'
+app.url.forget: 	'{$app.url.action_base}/auth/forget'
+app.url.invite: 	'{$app.url.action_base}/auth/invite'
+
+#管理面板
+app.url.admin:		'{$app.url.action_base}/admin'
+app.url.admin.report: '{$app.url.action_base}/admin/report'
+app.url.admin.reply: '{$app.url.action_base}/admin/reply'
+
+# 附件图片查看地址
+app.url.thumb: 		'/uploads/%s'
+app.url.asset_view: '/app/site/asset/view?id=%s'
+
+# 搜索
+app.url.search: 	'{$app.url.domain}/search'
+app.url.search_tag: '{$app.url.domain}/search/search_tag?q='
+
+# 默认的缩略图url
+app.url.default_thumb_small: '{$app.url.images}/pic_50x50.gif'
+app.url.default_thumb_middle: '{$app.url.images}/pic_180x180.gif'
+app.url.default_thumb_big: '{$app.url.images}/pic_580x580.gif'
+app.url.default_thumb_middle_height: 180
+
+# guide
+app.url.guide: '{$app.url.action_base}/guide'

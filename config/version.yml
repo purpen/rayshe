@@ -1,0 +1,5 @@
+app.version.lgk: 'v0.24b11101201'
+app.version.jquery_bundle_version: '{$app.version.lgk}'
+app.version.lgk_bundle_version: '{$app.version.lgk}'
+app.version.css_bundle_version: '{$app.version.lgk}'
+app.version.bookmarklet_bundle_version: 'v0.001'

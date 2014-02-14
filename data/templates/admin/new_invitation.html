@@ -1,0 +1,51 @@
+{%extends 'layout/admin.html'%}
+{% block page_css %}
+{% endblock %}
+{% block js %}
+{% endblock %}
+{% block content %}
+	<div class="list-group clearfix">
+		<div class="btn-group">
+			<a href="" class="btn btn-default">全部</a>
+			<a href="" class="btn btn-default">已使用</a>
+		</div>
+		<div class="btn-group">
+			<a href="{{ app_url_action_base }}/admin/new_invitation" class="btn btn-success">增发</a>
+		</div>
+	
+		<form class="form-inline pull-right" method="get" action="">
+			<div class="form-group">
+				<input class="form-control input-sm" name="search" />
+			</div>
+			<input type="submit" class="btn btn-success" value="搜索" />
+		</form>
+	</div>
+	<div class="list-group">
+		<h4>增发邀请码</h4>
+		<form action="{{ app_url_action_base }}/admin/gen_invitation" class="form-horizontal" method="post">
+			<div class="form-group">
+			  	<label class="col-sm-2 control-label">用户ID：</label>
+				<div class="col-sm-5">
+			  		<input type="text" class="form-control" name="user_id" />
+					<span class="help-block">请填写增发对象的用户ID.</span>
+				</div>
+			</div>
+			<div class="form-group">
+			  	<label class="col-sm-2 control-label">增发数量：</label>
+				<div class="col-sm-5">
+			  		<input type="text" class="form-control" name="quantity"  value="5" />
+					<span class="help-block">每一次增发的邀请码数量</span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+					<input type="submit" class="btn btn-success btn-lg" value="确认保存" />
+					<input type="reset" class="btn btn-link btn-lg" value="重置" />
+			    </div>
+			</div>
+			
+		</form>
+		
+	</div>
+{% endblock %}

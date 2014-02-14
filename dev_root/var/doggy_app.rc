@@ -1,0 +1,298 @@
+<?php
+//dump on 2014-02-14 11:39:44
+Doggy_Config::add( array (
+  'app.dispatcher.result.map' => 
+  array (
+    'redirect' => 'Doggy_Dispatcher_Result_Redirect',
+    'json' => 'Doggy_Dispatcher_Result_Json',
+    'file' => 'Doggy_Dispatcher_Result_File',
+    'raw' => 'Doggy_Dispatcher_Result_Raw',
+    'jquery' => 'Doggy_Dispatcher_Result_JQuery',
+    'dt' => 'DoggyX_View_HtmlPage',
+    'html' => 'DoggyX_View_HtmlPage',
+    'taconite' => 'DoggyX_View_TaconitePage',
+    'rss' => 'DoggyX_View_RssPage',
+    'mongofs' => 'DoggyX_View_MongoFs',
+  ),
+  'app.dispatcher.interceptors.run' => 
+  array (
+    0 => 'Doggy_Dispatcher_Interceptor_Parameters',
+    1 => 'Doggy_Dispatcher_Interceptor_UploadSupport',
+    2 => 'Sher_Core_Interceptor_XSession',
+    3 => 'DoggyX_Interceptor_BeforeInvoke',
+  ),
+  'app.dispatcher.interceptors.auth' => 
+  array (
+    'authen_action' => 'Doggy_Auth_Authentication_SimpleAction',
+  ),
+  'app.dispatcher.filters.run' => 
+  array (
+    'before' => 
+    array (
+      0 => 'Doggy_Dispatcher_Filter_Cache',
+    ),
+    'after' => 
+    array (
+      0 => 'Doggy_Dispatcher_Filter_Cache',
+      1 => 'Doggy_Dispatcher_Filter_NginxMemCache',
+      2 => '<rule1>',
+      3 => '<ruleN>',
+    ),
+  ),
+  'app.dispatcher.filters.cache' => 
+  array (
+    'rules' => 
+    array (
+      0 => '/(.*)html$/',
+    ),
+    'ttl' => 120,
+    'group' => '_cache_pages_',
+  ),
+  'app.dispatcher.routes' => '',
+  'app.session' => 
+  array (
+    'class' => 'Doggy_Session_Storage_Php',
+    'cookie_path' => '/',
+    'ttl' => 0,
+  ),
+  'app.storage.default' => 
+  array (
+    'class' => 'Doggy_Storage_Provider_FileSystem',
+    'options' => 
+    array (
+      'root' => '/tmp',
+      'url' => '',
+    ),
+  ),
+  'app.auth.provider.default' => 
+  array (
+    'class' => 'Doggy_Auth_Authentication_SessionProvider',
+  ),
+  'app.log.default' => 
+  array (
+    'class' => 'Doggy_Log_FileLog',
+    'options' => 
+    array (
+      'output' => 'dev.log',
+      'level' => 'debug',
+    ),
+  ),
+  'app.log.trace' => 
+  array (
+    'class' => 'Doggy_Log_FileLog',
+    'options' => 
+    array (
+      'output' => 'trace.log',
+      'level' => 'debug',
+    ),
+  ),
+  'app.cache_manager.default' => 
+  array (
+    'provider' => 'Doggy_Cache_Provider_Memcached',
+    'options' => 
+    array (
+      'host' => '127.0.0.1:11211',
+      'ttl' => 3600,
+    ),
+  ),
+  'app.dba.default' => 'mysql://root:@localhost/test?charset=utf8',
+  'app.model.dba' => 'default',
+  'app.db.default' => 'mysql://root:root@localhost/passport?charset=utf8',
+  'app.dt' => 
+  array (
+    'cache' => 'XCache',
+    'adapter_id' => 'default',
+  ),
+  'app.dt.extension_lib.core' => 
+  array (
+    'tags' => '',
+    'filters' => '',
+  ),
+  'app.cache.memcached.default' => 
+  array (
+    'servers' => 
+    array (
+      0 => 
+      array (
+        'host' => '127.0.0.1',
+        'port' => 11211,
+        'weight' => 1,
+      ),
+    ),
+  ),
+  'app.util.mail.default' => 
+  array (
+    'host' => 'localhost',
+    'user' => 'no-reply@localhost',
+    'password' => '',
+    'smtp_auth' => false,
+    'from' => 'no-reply@localhost',
+    'from_name' => 'system',
+  ),
+  'app.modules.doggy' => 
+  array (
+    'default_action' => 'Doggy_Action_Doggy',
+    'state' => 'on',
+    'namespace' => 'Doggy',
+    'index_action' => 'Doggy',
+  ),
+  'app.modules.boot' => 'sher',
+  'app.seq_generator' => '',
+  'app.id' => 'sher',
+  'app.mode' => 'dev',
+  'app.runtime.error_page' => '',
+  'app.version' => '',
+  'app.modules.sher' => 
+  array (
+    'state' => 'on',
+    'namespace' => 'Sher_App',
+    'index_action' => 'Index',
+  ),
+  'app.session.ttl' => 1800,
+  'app.session.service' => 'Sher_Core_Session_Service',
+  'app.session.engine' => 'DoggyX_Session_Engine_Mongo',
+  'app.session.online_ttl' => 600,
+  'app.session.engine.options' => 
+  array (
+    'collection' => 'session',
+  ),
+  'app.session.sid' => 'sher_sid',
+  'app.session.auth_sid' => 'sher_asid',
+  'app.mongodb_host' => '127.0.0.1',
+  'app.mongodb_rs' => false,
+  'app.mongo.default' => 
+  array (
+    'host' => '127.0.0.1',
+    'db' => 'sher',
+    'replicaSet' => false,
+  ),
+  'app.dt.extension_lib.sher_app' => 
+  array (
+    'tags' => 
+    array (
+      'stuff_list' => 'Sher_App_ViewTag_StuffList',
+      'comment_list' => 'Sher_App_ViewTag_CommentList',
+      'search_list' => 'Sher_App_ViewTag_SearchList',
+      'follow_list' => 'Sher_App_ViewTag_FollowList',
+      'user_list' => 'Sher_App_ViewTag_UserList',
+      'tags_list' => 'Sher_App_ViewTag_TagsList',
+      'cake_list' => 'Sher_App_ViewTag_CakeList',
+      'message_list' => 'Sher_App_ViewTag_MessageList',
+      'pager' => 'Sher_App_ViewTag_Pager',
+    ),
+    'filters' => 
+    array (
+    ),
+  ),
+  'app.js.use_bundle' => 0,
+  'app.css.use_bundle' => 0,
+  'app.url.invite.trigger' => 1,
+  'app.db.passport' => 'mysql://root:root@localhost/passport?charset=utf8',
+  'app.sinaweibo.app_key' => '3866118033',
+  'app.sinaweibo.app_secret' => '8143ca07fec3a2223ce1413099e5288b',
+  'app.passport.version' => 'v1',
+  'app.passport.auth_ttl' => 180,
+  'app.passport.v1.avatar_url' => 'http://login.chinavisual.com/avatar/%s/%s/2/%s',
+  'app.passport.v1.sso_handle' => 'http://sher.me/app/action/auth/sso_auth_v1',
+  'app.passport.v1.login' => 'http://login.chinavisual.com/passport.app/passport/sso/AuthLogin?hash=%s&salt=%s&url=%s&app_id=%s&meta=1',
+  'app.passport.v1.register' => 'http://login.chinavisual.com/passport.app/passport/sso/AuthRegister?hash=%s&salt=%s&url=%s&app_id=%s&meta=1',
+  'app.passport.v1.logout' => 'http://login.chinavisual.com/passport.app/passport/sso/AuthLogout?url=%s',
+  'app.passport.v1.profile' => 'http://login.chinavisual.com/',
+  'app.keychains.private' => 'xxxxOOOOxxxx',
+  'app.email.from' => 
+  array (
+    'address' => 'no-reply@chinavisual.com',
+    'name' => '系统邮件服务',
+  ),
+  'app.follow.max' => 2000,
+  'app.storage.sher' => 
+  array (
+    'class' => 'Doggy_Storage_Provider_FileSystem',
+    'options' => 
+    array (
+      'root' => '/Users/xiaoyi/Project/sher/data/web/uploads',
+      'root_url' => '/uploads',
+      'hash_dir' => false,
+    ),
+  ),
+  'app.asset.user_avatar' => 
+  array (
+    'big' => 290,
+    'small' => 100,
+    'little' => 30,
+  ),
+  'app.asset.photo' => 
+  array (
+    'thumb' => 630,
+  ),
+  'app.email.domains' => 
+  array (
+    '163.com' => 'http://mail.163.com/',
+    '126.com' => 'http://www.126.com/',
+    'gmail.com' => 'http://mail.google.com/',
+    'sina.com.cn' => 'http://mail.sina.com.cn/',
+    'sina.cn' => 'http://mail.sina.com.cn/',
+    'vip.sina.cn' => 'http://mail.sina.com.cn/',
+    '2008.sina.com' => 'http://mail.2008.sina.com.cn/',
+    'sohu.com' => 'http://mail.sohu.com/',
+    'tom.com' => 'http://mail.tom.com/',
+    '139.com' => 'http://mail.139.com/',
+    'qq.com' => 'http://mail.qq.com/',
+    'vip.qq.com' => 'http://mail.qq.com/',
+    'foxmail.com' => 'http://foxmail.com/',
+    'hotmail.com' => 'http://www.hotmail.com/',
+    'live.com' => 'http://mail.live.com/',
+    'yahoo.com.cn' => 'http://mail.cn.yahoo.com/',
+    'yahoo.cn' => 'http://mail.cn.yahoo.com/',
+    'yahoo.com' => 'http://mail.yahoo.com/',
+    'eyou.com' => 'http://www.eyou.com/',
+    '21cn.com' => 'http://mail.21cn.com/',
+    'yeah.net' => 'http://www.yeah.net/',
+    '188.com' => 'http://www.188.com/',
+    'sogou.com' => 'http://mail.sogou.com/',
+    '189.cn' => 'http://webmail3.189.cn/webmail/',
+  ),
+  'app.domain.base' => 'http://sher.me',
+  'app.domain.static' => 'http://sher.me',
+  'app.domain.app' => 'http://sher.me',
+  'app.url.domain' => 'http://sher.me',
+  'app.url.action_base' => 'http://sher.me/app/site',
+  'app.url.js' => 'http://sher.me/js',
+  'app.url.css' => 'http://sher.me/css',
+  'app.url.images' => 'http://sher.me/images',
+  'app.url.bundle' => 'http://sher.me/bundle',
+  'app.url.index' => 'http://sher.me/app/site/index',
+  'app.url.tags' => '/tags',
+  'app.url.tag' => '/tag',
+  'app.url.my' => 'http://sher.me/app/site/my',
+  'app.url.my.message' => 'http://sher.me/app/site/my/message',
+  'app.url.user' => 'http://sher.me/user',
+  'app.url.user.love' => 'http://sher.me/user/%s/love',
+  'app.url.user.album' => 'http://sher.me/user/%s/album',
+  'app.url.user.view' => 'http://sher.me/user/%s',
+  'app.url.comment' => 'http://sher.me/app/site/comment',
+  'app.url.auth' => 'http://sher.me/app/site/auth',
+  'app.url.login' => 'http://sher.me/app/site/index?ref=login',
+  'app.url.logout' => 'http://sher.me/app/site/auth/logout',
+  'app.url.register' => 'http://sher.me/app/site/index?ref=register',
+  'app.url.forget' => 'http://sher.me/app/site/auth/forget',
+  'app.url.invite' => 'http://sher.me/app/site/auth/invite',
+  'app.url.admin' => 'http://sher.me/app/site/admin',
+  'app.url.admin.report' => 'http://sher.me/app/site/admin/report',
+  'app.url.admin.reply' => 'http://sher.me/app/site/admin/reply',
+  'app.url.thumb' => '/uploads/%s',
+  'app.url.asset_view' => '/app/site/asset/view?id=%s',
+  'app.url.search' => 'http://sher.me/search',
+  'app.url.search_tag' => 'http://sher.me/search/search_tag?q=',
+  'app.url.default_thumb_small' => 'http://sher.me/images/pic_50x50.gif',
+  'app.url.default_thumb_middle' => 'http://sher.me/images/pic_180x180.gif',
+  'app.url.default_thumb_big' => 'http://sher.me/images/pic_580x580.gif',
+  'app.url.default_thumb_middle_height' => 180,
+  'app.url.guide' => 'http://sher.me/app/site/guide',
+  'app.version.lgk' => 'v0.24b11101201',
+  'app.version.jquery_bundle_version' => 'v0.24b11101201',
+  'app.version.lgk_bundle_version' => 'v0.24b11101201',
+  'app.version.css_bundle_version' => 'v0.24b11101201',
+  'app.version.bookmarklet_bundle_version' => 'v0.001',
+  'app.url.upload_url' => 'http://sher.me/uploader',
+));?>

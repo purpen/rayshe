@@ -1,0 +1,18 @@
+<taconite>
+{% if is_error %}
+<eval><![CDATA[
+    sher.show_error_note('{{ note }}');
+	scrolltotop.scrollup();
+]]></eval>
+{% else %}
+<eval><![CDATA[
+    sher.show_ok_note('{{ note }}',3000);
+	scrolltotop.scrollup();
+]]></eval>
+{% endif %}
+{% if redirect_url %}
+<eval><![CDATA[
+    sher.redirect('{{ redirect_url }}',500);
+]]></eval>
+{% endif %}
+</taconite>

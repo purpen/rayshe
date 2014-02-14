@@ -1,0 +1,20 @@
+{%extends 'layout/board.html'%}
+{% block page_css %}
+{% endblock %}
+{% block js %}
+{% endblock %}
+{% block jquery %}
+    {% if redirect_url %}
+        sher.redirect('{{ redirect_url }}',{{ delay_time|default 1500 }});
+    {% else %}
+        setTimeout("window.history.back(-1)",{{ delay_time|default 1500 }});
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="list-group clearfix">
+		<h3>{{ note }}</h3>
+	</div>
+</div>
+{% endblock %}
