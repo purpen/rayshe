@@ -74,7 +74,7 @@ class Sher_Core_Model_Asset extends Sher_Core_Model_Base {
         if (empty($row)) {
             return null;
         }
-        $file_path = $row['path'];
+        $file_path = $row['filepath'];
 		Sher_Core_Util_Asset::deleteAsset(self::ASSET_DOAMIN, $file_path);
 		
         return $this->remove($id);
