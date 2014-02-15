@@ -1,5 +1,5 @@
 <?php
-//deployed on: Sat Feb 15 11:36:46 2014
+//deployed on: Sat Feb 15 12:29:44 2014
 define('DOGGY_VERSION','v1.3.9-dev');
 define('DOGGY_APP_ROOT','/Users/xiaoyi/Project/sher/dev_root');
 define('DOGGY_APP_CLASS_PATH','/Users/xiaoyi/Project/sher/vendor:/Users/xiaoyi/Project/sher/src');

@@ -120,6 +120,7 @@ class Sher_Core_Util_Image {
 		if ($width > $scale_width){
 			$scale_height = $scale_width*$height/$width;
 			$gmagick->scaleimage($scale_width, $scale_height);
+			$gmagick->setCompressionQuality(95);
 		}
 		$bytes = $gmagick->getImageBlob();
 		
@@ -156,18 +157,21 @@ class Sher_Core_Util_Image {
 		// 生成大头像
 		$result['big_avatar'] = self::genPath($path, 'avatar');
 		$gmagick->resizeimage(290,290, Gmagick::FILTER_LANCZOS, 1);
+		$gmagick->setCompressionQuality(95);
 		$bytes = $gmagick->getImageBlob();
 		Sher_Core_Util_Asset::storeData('sher', $result['big_avatar'], $bytes);
 		
 		// 生成中头像
 		$result['mid_avatar'] = self::genPath($path, 'avatar');
 		$gmagick->resizeimage(100,100, Gmagick::FILTER_LANCZOS, 1);
+		$gmagick->setCompressionQuality(95);
 		$bytes = $gmagick->getImageBlob();
 		Sher_Core_Util_Asset::storeData('sher', $result['mid_avatar'], $bytes);
 		
 		// 生成小头像
 		$result['sml_avatar'] = self::genPath($path, 'avatar');
 		$gmagick->resizeimage(30,30, Gmagick::FILTER_LANCZOS, 1);
+		$gmagick->setCompressionQuality(95);
 		$bytes = $gmagick->getImageBlob();
 		Sher_Core_Util_Asset::storeData('sher', $result['sml_avatar'], $bytes);
 		

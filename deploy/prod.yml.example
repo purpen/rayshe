@@ -7,6 +7,8 @@ app.mongodb_host: '192.168.8.3'
 app.keychains.private: 'xxxxOOOOxxxx'
 
 
+app.url.thumb: 'http://img.rayshe.com/%s'
+
 # 附件存储目录
 app.storage.sher: 
     class: 'Doggy_Storage_Provider_FileSystem' 
