@@ -18,7 +18,7 @@ class Sher_App_Action_Index extends Sher_App_Action_Authorize {
 	protected $page_tab = 'page_index';
 	protected $page_html = 'page/index.html';
 	
-	protected $exclude_method_list = array('execute','home','help','about','contact');
+	protected $exclude_method_list = array('execute','home','verify_code','help','about','contact');
 
 	/**
 	 * 入口
