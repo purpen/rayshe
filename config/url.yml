@@ -57,8 +57,10 @@ app.url.default_thumb_middle: '{$app.url.images}/pic_180x180.gif'
 app.url.default_thumb_big: '{$app.url.images}/pic_580x580.gif'
 app.url.default_thumb_middle_height: 180
 
+# 图片分享
+app.url.share: '{$app.url.domain}/share'
 app.url.stuff: '{$app.url.domain}/idea'
-app.url.stuff.view:		'{$app.url.stuff}/%s'
+app.url.stuff.view: '{$app.url.stuff}/%s'
 
 # guide
 app.url.guide: '{$app.url.action_base}/guide'

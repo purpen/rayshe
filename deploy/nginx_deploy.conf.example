@@ -68,3 +68,17 @@ server {
 	        alias /;
 	    }
 }
+
+server {
+    listen       80;
+    server_name  img.rayshe.com;
+	charset utf-8;
+	index  index.html;
+	root /storage/uploads;
+	
+    access_log  off;
+	
+    client_max_body_size 60m;
+    
+	expires 30d;
+}

@@ -16,7 +16,7 @@ app.css.use_bundle: 0
 
 app.mongodb_host: '127.0.0.1'
 app.mongodb_rs: false
-
+        
 app.cache.memcached.default:
   servers:
     - 
