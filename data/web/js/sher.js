@@ -72,10 +72,9 @@ sher.initial = function(){
         return false;
 	});
 	
-	/* 此类表单使用ajax提交 */ 
-	$('body').on('submit', 'form.ajax-form', function(){
+	/* 此类表单使用ajax提交 */
+	$('form.ajax-form').livequery(function(){
 		$(this).ajaxForm();
-		return false;
 	});
 	
 	/* 隐藏某层 */

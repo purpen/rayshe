@@ -714,6 +714,10 @@ blockquote small a {
 	border-bottom:none;
 }
 
+.zclip-box {
+	position:relative;
+}
+
 
 #ft {
 	padding:20px 0 0;

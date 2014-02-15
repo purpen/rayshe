@@ -35,7 +35,9 @@ class Sher_App_ViewTag_CakeList extends Doggy_Dt_Tag {
 		if ($random) {
 			srand((double)microtime()*1000000);
 			$rand = rand(0,99999999);
-
+			
+			Doggy_Log_Helper::debug("Get cake random ${rand}.");
+			
 			$cake = new Sher_Core_Model_Cake();
 			$result = $cake->first(array(
 				'random' => array('$lt'=>$rand)

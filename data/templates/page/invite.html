@@ -4,10 +4,15 @@
 {% block js %}
 {% endblock %}
 {% block jquery %}
-	$('#select-filter').select2();
-	$('#select-filter-two').select2();
-	$('#select-filter-three').select2();
-	$('#select-filter-four').select2();
+	$('.copy-code').zclip({
+        path : '/js/ZeroClipboard.swf',
+        copy : function(){
+			return $(this).attr('name');
+       	},
+		afterCopy:function(){
+			$(this).addClass('btn-success').text('复制成功');
+		}
+    });
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -30,7 +35,11 @@
 						<tr>
 							<td>{{ code._id }}</td>
 							<td>未使用</td>
-							<td><a href="" class="btn btn-default">复制</a></td>
+							<td>
+								<div class="zclip-box">
+									<button class="btn btn-default copy-code" name="{{ code._id }}" >开始复制</button>
+								</div>
+							</td>
 						</tr>
 						{% endfor %}
 					</tbody>

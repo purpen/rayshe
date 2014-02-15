@@ -8,6 +8,7 @@
 			<meta name="description" content="悦伊，社区" />
 		{%endblock%}
 		<title>{% block title %}{% endblock %}</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
 		{% if css_use_bundle %}
 			<link rel="stylesheet" href="{{ app_url_css }}/bootstrap.min.css" type="text/css" />
 			<link rel="stylesheet" href="{{ app_url_css }}/todc-bootstrap.min.css" type="text/css" />
@@ -27,12 +28,16 @@
 			<script type="text/javascript" src="{{ app_url_js }}/jquery-1.10.2.min.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/bootstrap.min.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/jquery.vegas.min.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.livequery.min.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.zclip.min.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/bundle_{{ js_jquery_bundle_version }}_jquery.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/bundle_{{ js_sher_bundle_version }}_sher.js"></script>
 		{% else %}
-			<script type="text/javascript" src="{{ app_url_js }}/jquery-1.10.2.min.js"></script>
+			<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/bootstrap.min.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/jquery.vegas.min.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.livequery.min.js"></script>
+			<script type="text/javascript" src="{{ app_url_js }}/jquery.zclip.min.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/jquery.bar.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/jquery.taconite.js"></script>
 			<script type="text/javascript" src="{{ app_url_js }}/jquery.validate.js"></script>
