@@ -40,7 +40,7 @@ class Sher_Core_Service_TextIndexer {
             }
         }
         //全文检索内容包括: 昵称 姓名 个人评价 城市 职业 标签 
-        $full_content = $row['nickname'].' '.$row['realname'].' '.$row['summary'].' '.$row['city'].' '.$row['profile']['job'].' '.implode(' ',$row['tags']);
+        $full_content = $row['nickname'].' '.$row['profile']['realname'].' '.$row['summary'].' '.$row['city'].' '.$row['profile']['job'].' '.implode(' ',$row['tags']);
 		
         $full_words = Sher_Core_Helper_SCWS::segment_index_word($this->scws,$full_content);
         $tags = $row['tags'];
