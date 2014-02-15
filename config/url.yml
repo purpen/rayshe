@@ -57,5 +57,8 @@ app.url.default_thumb_middle: '{$app.url.images}/pic_180x180.gif'
 app.url.default_thumb_big: '{$app.url.images}/pic_580x580.gif'
 app.url.default_thumb_middle_height: 180
 
+app.url.stuff: '{$app.url.domain}/idea'
+app.url.stuff.view:		'{$app.url.stuff}/%s'
+
 # guide
 app.url.guide: '{$app.url.action_base}/guide'
