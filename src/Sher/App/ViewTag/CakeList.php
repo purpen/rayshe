@@ -39,16 +39,25 @@ class Sher_App_ViewTag_CakeList extends Doggy_Dt_Tag {
 			Doggy_Log_Helper::warn("Get cake random ${rand}.");
 			
 			$cake = new Sher_Core_Model_Cake();
-			$result = $cake->first(array(
-				'random' => array('$lt'=>$rand)
-			),array('created_on' => -1));
+			$options = array(
+				'page' => 1,
+				'size' => 1,
+				'sort' => array('created_on' => -1)
+			);
+			$result = $cake->find(array(
+						'random' => array('$lt'=>$rand)
+						),$options);
+			
 			if (empty($result)) {
-				$result = $cake->first(array(
-					'random' => array('$gte'=>$rand)
-				),array('created_on' => 1));
+				$options['sort'] = array('created_on' => 1);
+				$result = $cake->find(array(
+							'random' => array('$gte'=>$rand)
+							),$options);
 			}
 			
-			$context->set($var, $result);
+			if(!empty($result)){
+				$context->set($var, $result[0]);
+			}
 			
 			return;
 		}
