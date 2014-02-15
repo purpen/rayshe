@@ -56,6 +56,23 @@ class Sher_App_Action_Search extends Sher_App_Action_Authorize {
         
         return $this->_display_search_list($tag);
     }
+
+	/**
+     * 标签结果页
+     */
+    public function tag(){
+    	$tag = $this->stash['q'];
+    	$page = $this->stash['page'];
+    	$sort = $this->stash['sort'];
+    	if(empty($sort)){
+    		$sort = 'latest';
+    	}
+    	$this->stash['index_name'] = 'tags';
+    	$this->stash['page_tag_cache'] = 'tag_'.md5($tag).'s'.$sort.'p'.$page;
+    	$this->stash['pager_url'] = Sher_Core_Helper_Url::build_url_path('app.url.tag',$tag,'p#p#',$sort);
+    	
+    	return $this->display_tab_page('tab_'.$sort,'page/tag_result.html');
+    }
     
     /**
      * 标签列表
@@ -72,28 +89,6 @@ class Sher_App_Action_Search extends Sher_App_Action_Authorize {
     	$this->stash['tags'] = $tags;
     	return $this->display_tab_page('tab_hot','page/index_tag.html');
     }
-    /**
-     * 标签结果页
-     */
-    public function tag(){
-    	$tag = $this->stash['q'];
-    	$page = $this->stash['page'];
-    	$sort = $this->stash['sort'];
-
-		# 更新用户关注标签
-		$added = $this->stash['added'];
-		if($added){
-			$this->update_track_tag($tag);
-		}
-		
-    	if(empty($sort)){
-    		$sort = 'latest';
-    	}
-    	$this->stash['index_name'] = 'tags';
-    	$this->stash['page_tag_cache'] = 'tag_'.md5($tag).'s'.$sort.'p'.$page;
-    	$this->stash['pager_url'] = Sher_Core_Helper_Url::build_url_path('app.url.tag',$tag,'p#p#',$sort);
-    	
-    	return $this->display_tab_page('tab_'.$sort,'page/tag_stuff.html');
-    }
+    
 }
 ?>

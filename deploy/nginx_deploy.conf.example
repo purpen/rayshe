@@ -32,6 +32,16 @@ server {
 			rewrite ^/my/follow/p(\d+).*$ /app/site/my/follow?page=$1 last;
 	        rewrite ^/my(.*)$ /app/site/my$1 last;
 	    }
+	
+		location /he_list {
+			rewrite ^/he_list/p(\d+).*$ /app/site/index/he_list?page=$1 last;
+			rewrite ^/he_list(.*)$ /app/site/index/he_list$1 last;
+		}
+		
+		location /she_list {
+			rewrite ^/she_list/p(\d+).*$ /app/site/index/she_list?page=$1 last;
+			rewrite ^/she_list(.*)$ /app/site/index/she_list$1 last;
+		}
 
 	    location /user {
 		  rewrite ^/user/(\d+)[/]?$ /app/site/user?user_id=$1 last;
