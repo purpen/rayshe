@@ -24,6 +24,10 @@ class Sher_App_Action_Index extends Sher_App_Action_Authorize {
 	 * 入口
 	 */
 	public function execute(){
+		if($this->visitor->id){
+			$user_home_url = Sher_Core_Helper_Url::user_home_url($this->visitor->id); 
+			return $this->to_redirect($user_home_url);
+		}
 		return $this->home();
 	}
     /**
