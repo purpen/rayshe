@@ -41,11 +41,11 @@ class Sher_App_ViewTag_CakeList extends Doggy_Dt_Tag {
 			$cake = new Sher_Core_Model_Cake();
 			$result = $cake->first(array(
 				'random' => array('$lt'=>$rand)
-			));
+			),array('created_on' => -1));
 			if (empty($result)) {
 				$result = $cake->first(array(
 					'random' => array('$gte'=>$rand)
-				));
+				),array('created_on' => 1));
 			}
 			
 			$context->set($var, $result);
