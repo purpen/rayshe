@@ -3,8 +3,11 @@
 	<div id="photo-list" class="text-center">
 		{% stuff_list var:'photo' page:1 size:10 user_id:user.id %}
 		{% for p in photo.rows %}
-		<p>
+		<p class="photo-item" id="{{ p._id }}">
 			<img src="{{ p.thumb_big_view_url }}" /><br />
+			{% if user.id == visitor.id%}
+			<a class="confirm-request pull-right" href="{{ app_url_my }}/delete_photo?stuff_id={{ p._id }}">&times;</a>
+			{% endif %}
 		</p>
 		{% else %}
 		<p>

@@ -388,6 +388,26 @@ class Sher_App_Action_My extends Sher_App_Action_Authorize implements DoggyX_Act
 		return $this->display_tab_page('tab_message_detail');
     }
     
-    
+    /**
+     * 删除照片
+     */
+	public function delete_photo() {
+		$stuff_id = $this->stash['stuff_id'];
+		
+		$stuff = new Sher_Core_Model_Stuff();
+		$row = $stuff->find_by_id($stuff_id);
+		if(empty($row) || $row['user_id'] != $this->visitor->id){
+			return $this->ajax_notification('数据有误，不能删除！');
+		}
+		$ok = $stuff->remove_all_links($stuff_id);
+		if($ok){
+			// 记录用户图片数量
+			$this->visitor->dec_counter('photo_count');
+		}
+		
+		$this->stash['id'] = $stuff_id;
+		
+		return $this->to_taconite_page('ajax/del_ok.html');
+	}
 }
 ?>

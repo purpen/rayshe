@@ -139,8 +139,10 @@ class Sher_Core_Model_Stuff extends Sher_Core_Model_Base {
 
 		//删除asset
 		$asset = new Sher_Core_Model_Asset();
-		$asset->remove(array('parent_id'=>$stuff_id));
+		$asset->remove_and_file(array('parent_id'=>$stuff_id));
 		unset($asset);
+		
+		return true;
 	}
 
 }

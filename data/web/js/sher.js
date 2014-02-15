@@ -41,7 +41,7 @@ var sher = {
  */
 sher.initial = function(){
     
-	/* 此类为确认后执行的ajax操作 */
+	/* 此类为确认后执行的ajax操作 */	
 	$('body').on('click', 'a.confirm-request', function(){
 		if(confirm('确认执行这个操作吗?')){
         	$.get($(this).attr('href'));

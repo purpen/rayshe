@@ -48,10 +48,14 @@
 	{% include "block/sub_menu.html" %}
 	<div class="list-group clearfix">		
 		<form action="./" method="post" class="form ajax-form">
-			<h3>上传照片</h3>
+			<h3>上传照片 <small>已上传 {{ visitor.photo_count }} 照片</small></h3>
 			<p class="text-muted"><label class="badge mr-5">提示</label>上传最多10张2M、JPG照片，请认真挑选哦 :)</p>
 			<div class="upload-photo">
+				{% if visitor.photo_count < 10 %}
 				<div id="bootstrapped-fine-uploader"></div>
+				{% else %}
+				<p>非常抱歉，您的照片已超过 10 张，需更上传更多，请联系管理员！</p>
+				{% endif %}
 			</div>
 			<div id="photo-list" class="text-center">
 				
