@@ -1,5 +1,5 @@
 <?php
-//dump on 2014-02-14 11:39:44
+//dump on 2014-02-15 11:36:46
 Doggy_Config::add( array (
   'app.dispatcher.result.map' => 
   array (
@@ -210,7 +210,7 @@ Doggy_Config::add( array (
     'class' => 'Doggy_Storage_Provider_FileSystem',
     'options' => 
     array (
-      'root' => '/Users/xiaoyi/Project/sher/data/web/uploads',
+      'root' => '/www/rayshe/web/uploads',
       'root_url' => '/uploads',
       'hash_dir' => false,
     ),
@@ -288,11 +288,13 @@ Doggy_Config::add( array (
   'app.url.default_thumb_middle' => 'http://sher.me/images/pic_180x180.gif',
   'app.url.default_thumb_big' => 'http://sher.me/images/pic_580x580.gif',
   'app.url.default_thumb_middle_height' => 180,
+  'app.url.share' => 'http://sher.me/share',
+  'app.url.stuff' => 'http://sher.me/idea',
+  'app.url.stuff.view' => 'http://sher.me/idea/%s',
   'app.url.guide' => 'http://sher.me/app/site/guide',
-  'app.version.lgk' => 'v0.24b11101201',
-  'app.version.jquery_bundle_version' => 'v0.24b11101201',
-  'app.version.lgk_bundle_version' => 'v0.24b11101201',
-  'app.version.css_bundle_version' => 'v0.24b11101201',
-  'app.version.bookmarklet_bundle_version' => 'v0.001',
+  'app.version.sher' => 'v0.10b14021401',
+  'app.version.jquery_bundle_version' => 'v0.10b14021401',
+  'app.version.sher_bundle_version' => 'v0.10b14021401',
+  'app.version.css_bundle_version' => 'v0.10b14021401',
   'app.url.upload_url' => 'http://sher.me/uploader',
 ));?>

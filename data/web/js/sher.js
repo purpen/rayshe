@@ -74,7 +74,6 @@ sher.initial = function(){
 	
 	/* 此类表单使用ajax提交 */ 
 	$('body').on('submit', 'form.ajax-form', function(){
-		alert('submit form');
 		$(this).ajaxForm();
 		return false;
 	});
