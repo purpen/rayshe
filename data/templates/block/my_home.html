@@ -18,6 +18,34 @@
 </div>
 
 <div class="col-md-4">
+	{% if user.id == visitor.id %}
+		{% if user.visit.new_user_viewed == 1 %}
+			{% if user.marital == 11 %}
+				{% user_list var:'users' page:1 size:10 marital:11 sex:reverse_sex last_login:user.last_login%}
+				{% if users.rows %}
+					<h3 class="block-title">新单身的{% if visitor.sex == 1 %}她{% else %}他{% endif%}</h3>
+					<div class="row">
+						{% for u in users.rows %}
+						<div class="col-md-12 ubox-list">
+							<a href="{{ app_url_action_base }}/my/update_before_redirect?field=new_user_viewed&url={{ u.home_url }}" class="{{ u.sex_text }}">
+								<img src="{{ u.mid_avatar_url }}" class="avatar" />
+							</a>
+							<h5><a href="{{ app_url_action_base }}/my/update_before_redirect?field=new_user_viewed&url={{ u.home_url }}">{{ u.nickname }}</a> | {{ u.city }}</h5>
+							<p>{{ u.profile.job }}</p>
+							<p>年龄：{{ u.age_text }}</p>
+						</div>
+						{% endfor %}
+					</div>
+				{% else %}
+					<script type="text/javascript">
+						$.get('{{ app_url_action_base }}/my/ajax_update_visit?field=new_user_viewed');
+					</script>
+				{% endif %}
+				
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	
 	<h3 class="block-title">朋友评价</h3>
 	<div class="comment-list">
 		{% comment_list var:'comments' page:1 size:10 target_user_id:user.id %}

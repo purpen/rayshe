@@ -15,7 +15,7 @@
 		{% for u in list.rows %}
 		<div class="col-md-4 ubox-list">
 			<a href="{{ u.home_url }}" class="{{ u.sex_text }}">
-				<img src="{{ u.mid_avatar_url }}" class="avatar img-rounded" />
+				<img src="{{ u.mid_avatar_url }}" class="avatar" />
 			</a>
 			<h5><a href="{{ u.home_url }}">{{ u.nickname }}</a> | {{ u.city }}</h5>
 			<p>{{ u.profile.job }}</p>

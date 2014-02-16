@@ -49,6 +49,7 @@ class Sher_Core_Model_User extends Sher_Core_Model_Base {
 		'permission' => array(),
 		
         'last_login' => 0,
+		'current_login' => 0,
 	    'online_alive' => 0,
 		
         // counter
@@ -110,6 +111,10 @@ class Sher_Core_Model_User extends Sher_Core_Model_Base {
 			'fans_count' => 0,
 			'comment_count' => 0,
 			'people_count' => 0, 
+		),
+		// 用户行为记录
+		'visit' => array(
+			'new_user_viewed' => 0,
 		),
     );
     protected $required_fields = array('account','password');
@@ -294,8 +299,30 @@ class Sher_Core_Model_User extends Sher_Core_Model_Base {
         if (is_null($time)) {
             $time = time();
         }
-        $this->update_set((int)$user_id,array('last_login' => (int)$time));
+		// 同时更新上次登录时间
+		$row = $this->find_by_id($user_id);
+		if(!empty($row)){
+			$last_login = $row['current_login'];
+			if(!isset($row['visit'])){
+				$row['visit'] = array();
+			}
+			$visit = $row['visit'];
+			// 设置距离上次用户登录新增用户的标识
+			$visit['new_user_viewed'] = 1;
+			$this->update_set((int)$user_id, array('current_login'=>(int)$time, 'last_login'=> $last_login,'visit' => $visit));
+		}
     }
+	
+	/**
+	 * 更新用户行为记录标识
+	 */
+	public function update_visit_field($user_id, $field, $value=0) {
+		if(!in_array($field,array('new_user_viewed'))){
+			return;
+		}
+		$this->update_set((int)$user_id, array('visit.'.$field => $value));
+	}
+
     /**
      * 禁用账户
      */
@@ -388,6 +415,8 @@ class Sher_Core_Model_User extends Sher_Core_Model_Base {
 		$counter_name = 'counter.'.$field;
 		return $this->inc(array('_id' => (int)$user_id), $counter_name, $value,true);
 	}
+	
+	
 	
 }
 ?>

@@ -259,7 +259,27 @@ class Sher_App_Action_My extends Sher_App_Action_Authorize implements DoggyX_Act
 		
 		return $this->to_taconite_page('ajax/send_ok.html');
 	}
-
+	/**
+	 * 更新用户行为记录标识
+	 */
+	public function ajax_update_visit() {
+		$field = $this->stash['field'];
+		$this->visitor->update_visit_field($this->visitor->id, $field);
+		return $this->to_raw(200);
+	}
+	
+	/**
+	 * 更新某些记录后再跳转目标页
+	 */
+	public function update_before_redirect(){
+		// 更新用户行为记录标识
+		$field = $this->stash['field'];
+		$this->visitor->update_visit_field($this->visitor->id, $field);
+		
+		$url = $this->stash['url'];
+		return $this->to_redirect($url);
+	}
+	
 	/**
 	 * 编辑个人资料
 	 */

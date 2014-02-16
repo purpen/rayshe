@@ -38,7 +38,8 @@ class Sher_Core_Interceptor_XSession extends DoggyX_Interceptor_XSession {
                     $service->session->auth_token = $auth_token;
                     $service->load_visitor();
                     //update user last login
-                    $service->login_user->update_set($auth_user_id, array('last_login' => time()));
+                    // $service->login_user->update_set($auth_user_id, array('last_login' => time()));
+					$service->login_user->touch_last_login($auth_user_id);
                     // touch auth token, keep it live!
                     $service->touch_auth_cookie($auth_user_id,$auth_token);
                 }

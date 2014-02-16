@@ -27,6 +27,8 @@ class Sher_App_ViewTag_UserList extends Doggy_Dt_Tag {
 		$marital = 0;
 		// 性别
 		$sex = 0;
+		// 用户推荐
+		$last_login = 0;
 		
         
         $search_id = 0;
@@ -85,6 +87,10 @@ class Sher_App_ViewTag_UserList extends Doggy_Dt_Tag {
                 '$gt' => time() - 3600*24*30,
             );
         }
+		// 获取注册时间大于某登录时间
+		if($last_login) {
+			$query['created_on'] = array('$gt' => $last_login);
+		}
 		
         if($search_id) {
             $query['_id'] = (int)$search_id;

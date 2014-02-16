@@ -38,6 +38,7 @@ class Sher_App_Action_User extends Sher_App_Action_Authorize implements DoggyX_A
 	public function vcenter(){
 		$this->set_target_css_state('home');
 		$this->stash['profile'] = $this->stash['user']['profile'];
+		$this->stash['reverse_sex'] = ($this->stash['user']['sex'] == Sher_Core_Model_User::SEX_MALE) ? Sher_Core_Model_User::SEX_FEMALE : Sher_Core_Model_User::SEX_MALE;
 		
 		return $this->display_tab_page('tab_home');
 	}
