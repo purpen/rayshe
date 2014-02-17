@@ -1,18 +1,16 @@
 <taconite>
 {% if is_error %}
-<eval><![CDATA[
-    sher.show_error_note('{{ note }}');
-	scrolltotop.scrollup();
-]]></eval>
+	<eval>
+		sher.show_error_note('{{ note }}');
+	</eval>
 {% else %}
-<eval><![CDATA[
-    sher.show_ok_note('{{ note }}',3000);
-	scrolltotop.scrollup();
-]]></eval>
+	<eval>
+		sher.show_ok_note('{{ note }}',3000);
+	</eval>
 {% endif %}
 {% if redirect_url %}
-<eval><![CDATA[
-    sher.redirect('{{ redirect_url }}',500);
-]]></eval>
+	<eval>
+		sher.redirect('{{ redirect_url }}',500000);
+	</eval>
 {% endif %}
 </taconite>
