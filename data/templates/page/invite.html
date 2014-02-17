@@ -38,7 +38,7 @@
 							<td>未使用</td>
 							<td>
 								<div class="zclip-box">
-									<button class="btn btn-default copy-code" name="{{ code._id }}" >开始复制</button>
+									<button class="btn btn-default copy-code" name="{{ app_url_domain }}/?l={{ code._id }}" >开始复制</button>
 								</div>
 							</td>
 						</tr>
@@ -61,7 +61,7 @@
 						<tr>
 							<td>{{ code._id }}</td>
 							<td>{% if code.used_by %}已使用{% else %}未使用{% endif %}</td>
-							<td><a href="{{ code.invited_user.home_url }}" target="_blank">{{ code.invited_user.nickname || code.invited_user.account }}</a></td>
+							<td><a href="{{ code.invited_user.home_url }}" target="_blank">{{ code.invited_user.nickname }}</a></td>
 						</tr>
 						{% endfor %}
 					</tbody>

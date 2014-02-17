@@ -16,6 +16,11 @@ class Sher_Core_Service_Search extends Sher_Core_Service_Base {
         $this->text_index = new Sher_Core_Model_TextIndex();
         $this->scws = scws_new();
         $this->scws->set_charset('utf8');
+		$this->scws->add_dict(ini_get("scws.default.fpath").'/dict.utf8.xdb', SCWS_XDICT_XDB);
+        $rayshe_dict = ini_get("scws.default.fpath").'/dict.rayshe.txt';
+        if (is_file($rayshe_dict)) {
+            $this->scws->add_dict($rayshe_dict, SCWS_XDICT_TXT);
+        }
     }
 
     public function __destruct() {
@@ -37,13 +42,15 @@ class Sher_Core_Service_Search extends Sher_Core_Service_Base {
         if (!empty($query_string)) {
             $query_words = Sher_Core_Helper_SCWS::segment_query_word($this->scws,$query_string);
             if (!empty($query_words)) {
-                if (count($query_words) == 1) {
-                    $query[$index_name] = $query_words[0];
+				if (count($query_words)==1) {
+                    $new_query[$index_name] = $query_words[0];
                 }
                 else {
-                    $query[$index_name]['$all'] = $query_words;
+                    $new_query[$index_name]['$all'] = $query_words;
                 }
+                $new_query += $query;
             }
+			$query = $new_query;
         }
         return $this->query_list($this->text_index,$query,$options);
     }

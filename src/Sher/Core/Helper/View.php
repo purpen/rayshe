@@ -31,13 +31,7 @@ class Sher_Core_Helper_View {
         
         $stash['site_menu_follow'] = Sher_Core_Helper_Url::build_url_path('app.url.stuff','follow');
 
-        $stash['site_menu_rank_day'] = Sher_Core_Helper_Url::build_url_path('app.url.index','sort','rank','rank','day');
-        $stash['site_menu_rank_week'] = Sher_Core_Helper_Url::build_url_path('app.url.index','sort','rank','rank','week');
-        $stash['site_menu_rank_month'] = Sher_Core_Helper_Url::build_url_path('app.url.index','sort','rank','rank','month');
-        $stash['site_menu_rank_all'] = Sher_Core_Helper_Url::build_url_path('app.url.index','sort','rank','rank','all');
-
         $stash['site_menu_my'] = Sher_Core_Helper_Url::build_url_path('app.url.my');
-        $stash['site_menu_share'] = Sher_Core_Helper_Url::build_url_path('app.url.share');
         $stash['site_menu_search'] = Sher_Core_Helper_Url::build_url_path('app.url.search');
         $stash['site_menu_tag'] = Sher_Core_Helper_Url::build_url_path('app.url.tag');
 
@@ -45,9 +39,7 @@ class Sher_Core_Helper_View {
         $stash['site_menu_register'] = Sher_Core_Helper_Url::build_url_path('app.url.auth','register');
         $stash['site_menu_logout'] = Sher_Core_Helper_Url::build_url_path('app.url.auth','logout');
         $stash['site_menu_forget'] = Sher_Core_Helper_Url::build_url_path('app.url.auth','forget');
-        $stash['site_menu_sina'] = Sher_Core_Helper_Url::build_url_path('app.url.auth','sina');
         $stash['site_menu_invite'] = Sher_Core_Helper_Url::build_url_path('app.url.my','invite');
-        $stash['site_menu_share_apply'] = Sher_Core_Helper_Url::build_url_path('app.url.my','share_apply');
 
 		$stash['site_menu_admin'] = Doggy_Config::$vars['app.url.admin'];
         $stash['site_menu_admin_report'] = Sher_Core_Helper_Url::build_url_path('app.url.admin','report');

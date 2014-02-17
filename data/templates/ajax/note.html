@@ -2,10 +2,12 @@
 {% if is_error %}
 	<eval>
 		sher.show_error_note('{{ note }}');
+		scrolltotop.scrollup();
 	</eval>
 {% else %}
 	<eval>
 		sher.show_ok_note('{{ note }}',3000);
+		scrolltotop.scrollup();
 	</eval>
 {% endif %}
 {% if redirect_url %}

@@ -55,6 +55,11 @@
 		}
 	});
 	
+	// 自动触发注册按钮
+	{% if l %}
+		$('#register-button').trigger("click");
+	{% endif %}
+	
 {% endblock %}
 {% block layout_content %}
 <div id="bd">
@@ -65,7 +70,7 @@
 					<img src="{{ app_url_images }}/rayshe.png" alt="所谓伊人，在水一方。" />
 				</div>
 				<div class="buttons-box">
-					<a href="#login-form" class="btn btn-inverse btn-lg btn-auth">登录</a> <a href="#register-form" class="btn btn-inverse btn-lg btn-auth">注册</a>
+					<a href="#login-form" class="btn btn-inverse btn-lg btn-auth">登录</a> <a href="#register-form" class="btn btn-inverse btn-lg btn-auth" id="register-button">注册</a>
 				</div>
 
 				<div class="list-group" id="auth-box">
@@ -100,7 +105,7 @@
 						<div class="form-group mt-20">
 						  	<label class="col-sm-3 control-label">邀请码：</label>
 							<div class="col-sm-9">
-								<input name="invite_code" type="text" maxChars="24" class="form-control" value="{{ invite_code }}"  remote="{{ app_url_action_base }}/auth/ajax_check_invite_code" id="invite_code" />
+								<input name="invite_code" type="text" maxChars="24" class="form-control" value="{{ l }}"  remote="{{ app_url_action_base }}/auth/ajax_check_invite_code" id="invite_code" />
 							</div>
 						</div>
 						<div class="form-group clearfix">

@@ -6,7 +6,7 @@ class Sher_App_Action_Search extends Sher_App_Action_Authorize {
 	);
 	
 	public function execute() {
-       $words = Sher_Core_Service_Search::instance()->check_query_string($this->stash['q']);
+       	$words = Sher_Core_Service_Search::instance()->check_query_string($this->stash['q']);
         return $this->_display_search_list($words);
 	}
 	

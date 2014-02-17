@@ -4,12 +4,13 @@
  */
 class Sher_App_Action_Index extends Sher_App_Action_Authorize {
 	public $stash = array(
-		'category_id'=>0,
 		'page'=>1,
 		'sort'=>'latest',
 		'rank'=>'day',
 		'q'=>'',
 		'ref'=>'',
+		// 邀请码
+		'l'=>'',
 	);
 	
 	// 一个月时间

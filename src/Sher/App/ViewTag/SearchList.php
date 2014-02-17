@@ -37,8 +37,9 @@ class Sher_App_ViewTag_SearchList extends Doggy_Dt_Tag {
         $options['sort_field'] = $sort_field;
         $options['page'] = $page;
         $options['size'] = $size;
+
         $service = Sher_Core_Service_Search::instance();
-        
+		
         $result = $service->search($search_word,$index_name,$query,$options);
         if(!empty($result['rows'])){
         	$rows = array();

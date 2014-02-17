@@ -9,15 +9,18 @@ class Sher_Core_Helper_SCWS {
      */
     public static function segment_index_word($scws,$text) {
         $result = array();
+		
         if (empty($text)) {
             return $result;
         }
+		
         $scws->set_ignore(true);
         $scws->send_text($text);
+		
         while ($words = $scws->get_result()) {
             foreach ($words as $w) {
                 // 忽略单字
-                if ($w['len'] <= 3) {
+                if ($w['len'] <= 3 && $w['attr'] != 'n' && $w['attr'] != 'en' ) {
                     continue;
                 }
                 $result[] = $w['word'];

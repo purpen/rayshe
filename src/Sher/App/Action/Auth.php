@@ -82,7 +82,7 @@ class Sher_App_Action_Auth extends Sher_App_Action_Base {
 		
         $this->clear_auth_return_url();
 		
-		return $this->ajax_note('欢迎回来,'.$nickname, false, $redirect_url);
+		return $this->ajax_note('欢迎,'.$nickname.' 回来.', false, $redirect_url);
 	}
     
 	/**
