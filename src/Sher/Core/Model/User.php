@@ -168,9 +168,9 @@ class Sher_Core_Model_User extends Sher_Core_Model_Base {
 			$row['sml_avatar_url'] = Sher_Core_Helper_Url::asset_view_url($row['avatar']['sml_avatar']);
 		}else{
 			// 用户默认头像
-			$row['big_avatar_url'] = Sher_Core_Helper_Url::avatar_default_url('big');
-			$row['mid_avatar_url'] = Sher_Core_Helper_Url::avatar_default_url('mid');
-			$row['sml_avatar_url'] = Sher_Core_Helper_Url::avatar_default_url('sml');
+			$row['big_avatar_url'] = Sher_Core_Helper_Url::avatar_default_url('big', $row['sex']);
+			$row['mid_avatar_url'] = Sher_Core_Helper_Url::avatar_default_url('mid', $row['sex']);
+			$row['sml_avatar_url'] = Sher_Core_Helper_Url::avatar_default_url('sml', $row['sex']);
 		}
 		
 		if($row['sex'] == self::SEX_FEMALE){

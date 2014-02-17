@@ -15,17 +15,18 @@ class Sher_Core_Helper_Url {
 	/**
 	 * 用户默认头像
 	 */
-	public static function avatar_default_url($type='big'){
+	public static function avatar_default_url($type='big',$sex=2){
 		$avatar_default = '';
+		$prefix = ($sex == 2) ? 'female' : 'male';
 		switch ($type) {
 		    case 'big':
-		        $avatar_default = '/images/avatar_big.jpg';
+		        $avatar_default = "/images/avatar_${prefix}_big.jpg";
 		        break;
 		    case 'mid':
-		        $avatar_default = '/images/avatar_mid.jpg';
+		        $avatar_default = "/images/avatar_${prefix}_mid.jpg";
 		        break;
 		    case 'sml':
-		        $avatar_default = '/images/avatar_sml.jpg';
+		        $avatar_default = "/images/avatar_${prefix}_sml.jpg";
 		        break;
 		}
 		return $avatar_default;
