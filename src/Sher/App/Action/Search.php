@@ -19,7 +19,7 @@ class Sher_App_Action_Search extends Sher_App_Action_Authorize {
             $this->stash['has_scws'] = true;
             $query_string = $this->stash['q'];
             foreach ($words as $k=>$v){
-                $query_string = str_replace($v,"<b class='d-red'>{$v}</b>",$query_string);
+                $query_string = str_replace($v,"<b class='text-danger'>{$v}</b>",$query_string);
             }
             $this->stash['highlight'] = $query_string;
         }
