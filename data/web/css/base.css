@@ -604,6 +604,10 @@ ul li, nav li {
 	color: #FFFFFF;
 }
 
+.ubox-list {
+	margin-bottom: 20px;
+}
+
 .ubox-list .avatar {
 	border:10px solid #f1f1f1;
 	float:left;
