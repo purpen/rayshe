@@ -30,7 +30,7 @@ class Sher_App_Action_My extends Sher_App_Action_Authorize implements DoggyX_Act
     }
 	
 	public function execute(){
-		
+		return false;
 	}
 	
 	/**
@@ -45,6 +45,11 @@ class Sher_App_Action_My extends Sher_App_Action_Authorize implements DoggyX_Act
 	 */
 	public function profile(){
 		$this->stash['profile'] = $this->visitor->profile;
+		
+		if($this->stash['first_login'] == 1){
+			$this->stash['error_message'] = '请首先完善个人资料，再继续！';
+		}
+		
 		$age = $this->visitor->age;
 		$years = array();
 		$mouths = array();
@@ -319,6 +324,8 @@ class Sher_App_Action_My extends Sher_App_Action_Authorize implements DoggyX_Act
 		);
 		$user_info['tags'] = $this->stash['tags'];
 		$user_info['summary'] = $this->stash['summary'];
+		
+		$user_info['first_login'] = 0;
 		
 		
 		$criteria = array('_id'=>$this->visitor->id);

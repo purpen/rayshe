@@ -135,9 +135,30 @@ class Sher_Core_Model_User extends Sher_Core_Model_Base {
 	
     protected function after_save() {
     }
+	
     protected function validate() {
+		if(!$this->is_saved() && !$this->_check_account){
+			throw new Sher_Core_Model_Exception('手机号码已被占用，请更换或重试！');
+		}
         return true;
     }
+	
+	/**
+	 * 检测账户是否唯一
+	 */
+	protected function _check_account() {
+		$account = $this->data['account'];
+		if(empty($account)){
+			return false;
+		}
+		$row = $this->first(array('account' => $account));
+		if(!empty($row)){
+			return false;
+		}
+		return true;
+	}
+
+
     protected function extra_extend_model_row(&$row) {
         $id = $row['id'] = $row['_id'];
 		# 用户头像

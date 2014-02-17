@@ -104,7 +104,7 @@ class Sher_App_Action_Auth extends Sher_App_Action_Base {
 		}
 		
 		// 验证验证码是否有效
-		if(empty($this->stash['verify_code'])){
+		if(!empty($this->stash['verify_code'])){
 			$verify = new Sher_Core_Model_Verify();
 			$row = $verify->first(array('phone'=>$this->stash['account'],'code'=>$this->stash['verify_code']));
 			if(empty($row)){
@@ -115,28 +115,38 @@ class Sher_App_Action_Auth extends Sher_App_Action_Base {
 			}
 		}
 		
+		// 验证邀请码
+		if (!$this->_invitation_is_ok()) {
+			return $this->ajax_note('邀请码不存在或已被使用！',true);
+		}
+		
         try {
 			$user = new Sher_Core_Model_User();
-            $user->create(array(
+            $ok = $user->create(array(
                 'account' => $this->stash['account'],
                 'state' => Sher_Core_Model_User::STATE_OK,
                 'phone' => $this->stash['account'],
 				'invitation' => $this->stash['invite_code'],
                 'password' => sha1($this->stash['password']),
             ));
-            $user_id = $user->id;
 			
-			// 设置邀请码已使用
-			$this->mark_invitation_used($user_id);
+			if($ok){
+				$user_id = $user->id;
+
+				// 设置邀请码已使用
+				$this->mark_invitation_used($user_id);
+
+				Sher_Core_Helper_Auth::create_user_session($user_id);
+			}
 			
-			Sher_Core_Helper_Auth::create_user_session($user_id);
-			
-            return $this->to_redirect(Sher_Core_Helper_Url::user_home_url($user_id));
-			
-        } catch (Doggy_Model_ValidateException $e) {
+        } catch (Sher_Core_Model_Exception $e) {
             Doggy_Log_Helper::error('Failed to create_passport:'.$e->getMessage());
-            return $this->ajax_note("非常抱歉，系统临时出现了故障,请您稍后重新尝试",true,'/');
+            return $this->ajax_note("注册失败:".$e->getMessage(), true);
         }
+		
+		$user_profile_url = Doggy_Config::$vars['app.url.my'].'/profile';
+		
+		return $this->ajax_note("注册成功，欢迎你加入悦伊！", false, $user_profile_url);
 	}
 
 	/**

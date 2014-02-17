@@ -560,13 +560,17 @@ ul li, nav li {
 	width:60%;
 }
 .auth-form .she-submit {
-	padding:9px 99px;
+	padding:9px 106px;
 }
 .form-arrow {
 	height: 8px;
 	margin-top: -8px;
 	display:none;
 	background: url("/images/icon-symbol.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.alert-box-home {
+	width:370px;
+	margin:0 auto;
 }
 
 .sub-nav {

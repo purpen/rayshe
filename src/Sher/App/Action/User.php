@@ -29,13 +29,17 @@ class Sher_App_Action_User extends Sher_App_Action_Authorize implements DoggyX_A
 		if (empty($this->stash['user'])) {
 	       return $this->display_note_page('用户不存在');
 	    }
-		
 		return $this->vcenter();
 	}
 	/**
 	 * 用户个人主页
 	 */
 	public function vcenter(){
+		// 首次登录，需先完成资料
+		if($this->stash['visitor']['first_login'] == 1){
+			$user_profile_url = Doggy_Config::$vars['app.url.my'].'/profile?first_login=1';
+			return $this->to_redirect($user_profile_url);
+		}
 		$this->set_target_css_state('home');
 		$this->stash['profile'] = $this->stash['user']['profile'];
 		$this->stash['reverse_sex'] = ($this->stash['user']['sex'] == Sher_Core_Model_User::SEX_MALE) ? Sher_Core_Model_User::SEX_FEMALE : Sher_Core_Model_User::SEX_MALE;

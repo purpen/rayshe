@@ -10,6 +10,10 @@
 	$('#select-filter-three').select2();
 	
 	sher.build_profile_page();
+	
+	{% if error_message %}
+		sher.show_error_note('{{ error_message }}');
+	{% endif %}
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -17,18 +21,18 @@
 	<div class="list-group clearfix">
 		<form action="{{app_url_action_base}}/my/save_profile" method="post" class="form" id="profile-form">
 			<h3>更新个人资料</h3>
-			<p class="text-muted"><label class="badge mr-5">注意</label>带*号资料为保密资料，仅您关注的朋友可见。</p>
+			<p class="text-muted"><label class="badge mr-5">注意</label>带<small class="text-info">*</small>号资料为保密资料，仅您关注的朋友可见。</p>
 			<input class="form-control" name="_id" type="hidden" value="{{ user_id }}" />
 			<div class="form-group row">
 				<div class="col-md-3">
-					<label>昵称：</label>
+					<label><small class="text-info">*</small>昵称：</label>
 					<input type="text" class="form-control" name="nickname" value="{{ user.nickname }}" />
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<div class="col-md-3">
-					<label>性别：</label>
+					<label><small class="text-info">*</small>性别：</label>
 					<div class="clearfix">
 						<input type="radio" name="sex" value="1" {%if user.sex == 1%}checked="checked"{%endif%}> 男
 						<input type="radio" name="sex" value="2" {%if user.sex == 2%}checked="checked"{%endif%}> 女
@@ -36,7 +40,7 @@
 				</div>
 				
 				<div class="col-md-3">
-					<label>婚姻状况：</label>
+					<label><small class="text-info">*</small>婚姻状况：</label>
 					<div class="clearfix">
 						<input type="radio" name="marital" value="11" {%if user.marital == 11%}checked="checked"{%endif%}> 单身
 						<input type="radio" name="marital" value="12" {%if user.marital == 12%}checked="checked"{%endif%}> 热恋
