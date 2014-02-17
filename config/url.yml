@@ -12,7 +12,7 @@ app.url.images: '{$app.domain.static}/images'
 app.url.bundle: '{$app.domain.base}/bundle'
 
 #首页
-app.url.index:			'{$app.url.action_base}/index'
+app.url.index:			'{$app.url.domain}'
 #tag,分类,搜索
 app.url.tags:           '/tags'
 app.url.tag:			'/tag'

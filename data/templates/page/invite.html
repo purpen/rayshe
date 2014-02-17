@@ -61,7 +61,7 @@
 						<tr>
 							<td>{{ code._id }}</td>
 							<td>{% if code.used_by %}已使用{% else %}未使用{% endif %}</td>
-							<td></td>
+							<td><a href="{{ code.invited_user.home_url }}" target="_blank">{{ code.invited_user.nickname || code.invited_user.account }}</a></td>
 						</tr>
 						{% endfor %}
 					</tbody>
